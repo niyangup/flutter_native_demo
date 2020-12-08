@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_demo/second_page.dart';
 
 void main() => runApp(MaterialApp(home: MyApp()));
 
@@ -14,6 +15,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.chevron_right),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage()));
+        },
+      ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (notification) {
           if (notification is ScrollUpdateNotification) {
