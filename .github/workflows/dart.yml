@@ -23,6 +23,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.22.x'
+      - run: flutter doctor -v
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
