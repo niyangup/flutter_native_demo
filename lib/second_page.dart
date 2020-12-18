@@ -39,7 +39,7 @@ class _SecondPageState extends State<SecondPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          controller.sink.add(total);
+          controller.sink.add(total++);
         },
       ),
       body: Center(
