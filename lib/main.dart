@@ -68,8 +68,8 @@ class _MyAppState extends State<MyApp> {
           return Opacity(
             opacity: (distance.value / 300) > 0
                 ? (distance.value / 300) > 1
-                ? 1
-                : distance.value / 300
+                    ? 1
+                    : distance.value / 300
                 : 0,
             child: Text('text'),
           );
@@ -80,31 +80,14 @@ class _MyAppState extends State<MyApp> {
       flexibleSpace: _buildFlexibleSpaceBar(),
       actions: [
         PopupMenuButton<String>(
+          onSelected: (String value) {
+            var page = value == "Stream" ? SecondPage() : NativeViewPage();
+            Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+          },
           itemBuilder: (context) {
             return <PopupMenuEntry<String>>[
-              PopupMenuItem<String>(
-                value: 'Stream',
-                child: InkWell(
-                  child: Text('Stream'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    // Get.to(SecondPage());
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage()));
-                  },
-                ),
-              ),
-              PopupMenuItem<String>(
-                value: 'AndroidView',
-                child: InkWell(
-                  child: Text('AndroidView'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    // Get.to(NativeViewPage());
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => NativeViewPage()));
-                  },
-                ),
-              ),
+              PopupMenuItem<String>(value: 'Stream', child: Text('Stream')),
+              PopupMenuItem<String>(value: 'AndroidView', child: Text('AndroidView')),
             ];
           },
         )
