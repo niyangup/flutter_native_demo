@@ -21,14 +21,16 @@ class _SecondPageState extends State<SecondPage> {
 
   initData() async {
     await Future.delayed(Duration(seconds: 2), () {
-      controller.sink.addError(Exception("this is exception"));
+      if (!controller.isClosed) {
+        controller.sink.addError(Exception("this is exception"));
+      }
     });
   }
 
   @override
   void dispose() {
     super.dispose();
-    controller.close();
+    controller?.close();
   }
 
   @override
@@ -39,7 +41,9 @@ class _SecondPageState extends State<SecondPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          controller.sink.add(total++);
+          if (!controller.isClosed) {
+            controller.sink.add(total++);
+          }
         },
       ),
       body: Center(
