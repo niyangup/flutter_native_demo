@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first_demo/second_page.dart';
-import 'package:get/get.dart';
 
 import 'native_view/native_view_page.dart';
 
