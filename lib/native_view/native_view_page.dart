@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../constants.dart';
+
 class NativeViewPage extends StatefulWidget {
   NativeViewPage({Key key}) : super(key: key);
 
@@ -11,7 +13,7 @@ class NativeViewPage extends StatefulWidget {
 }
 
 class _NativeViewPageState extends State<NativeViewPage> {
-  MethodChannel _channel = MethodChannel("name");
+  MethodChannel _channel = MethodChannel(NativeViewPageMethodChannelName);
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +41,8 @@ class _NativeViewPageState extends State<NativeViewPage> {
           ElevatedButton(
             child: Text('用MethodChannel切换内容'),
             onPressed: () async {
-              String msg =
-                  await _channel.invokeMethod<String>("eat", ["this is text", "this is haha"]);
+              String msg = await _channel.invokeMethod<String>(
+                  NativeViewPageMethodChannelInvokeName, ["this is text", "this is haha"]);
               print(msg);
             },
           )

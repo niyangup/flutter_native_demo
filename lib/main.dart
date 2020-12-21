@@ -1,9 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_first_demo/second_page.dart';
 
+import 'map_view/map_select_page.dart';
 import 'native_view/native_view_page.dart';
 
-void main() => runApp(MaterialApp(home: MyApp()));
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isAndroid) {
+    SystemUiOverlayStyle systemUiOverlayStyle =
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  }
+  runApp(MaterialApp(home: MyApp()));
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -11,7 +23,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int total = 10;
+  int total = 12;
   ValueNotifier distance = ValueNotifier<double>(0.0);
 
   @override
@@ -80,13 +92,21 @@ class _MyAppState extends State<MyApp> {
       actions: [
         PopupMenuButton<String>(
           onSelected: (String value) {
-            var page = value == "Stream" ? SecondPage() : NativeViewPage();
+            var page;
+            if (value == "Stream") {
+              page = SecondPage();
+            } else if (value == "AndroidView") {
+              page = NativeViewPage();
+            } else if (value == "Map") {
+              page = MapSelectPage();
+            }
             Navigator.push(context, MaterialPageRoute(builder: (context) => page));
           },
           itemBuilder: (context) {
             return <PopupMenuEntry<String>>[
               PopupMenuItem<String>(value: 'Stream', child: Text('Stream')),
               PopupMenuItem<String>(value: 'AndroidView', child: Text('AndroidView')),
+              PopupMenuItem<String>(value: 'Map', child: Text('Map')),
             ];
           },
         )
@@ -104,8 +124,8 @@ class _MyAppState extends State<MyApp> {
       centerTitle: true,
       background: ConstrainedBox(
         constraints: BoxConstraints.expand(),
-        child: Image.network(
-          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+        child: Image.asset(
+          "assets/img/pic_head.jpg",
           fit: BoxFit.cover,
         ),
       ),
