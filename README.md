@@ -1,4 +1,4 @@
-# flutter集成的小demo 以集成原生为主
+# flutter集成的小demo (以集成原生Android为主)
 ### 简简单单集成小demo
 - 使用github中Actions的CI进行持续集成
   >由此命令来触发CI
