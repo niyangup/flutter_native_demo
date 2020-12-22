@@ -26,6 +26,11 @@ class NativeViewFactory extends PlatformViewFactory {
     @Override
     public PlatformView create(@NonNull Context context, int id, @Nullable Object args) {
         final Map<String, Object> creationParams = (Map<String, Object>) args;
-        return new NativeView(context,messenger, id, creationParams);
+        if (((Map<String, Object>) args).get("url") != null) {
+            return new NativeWebView(context, messenger, id, creationParams);
+        } else {
+            return new NativeView(context, messenger, id, creationParams);
+        }
+
     }
 }

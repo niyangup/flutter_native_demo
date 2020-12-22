@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_first_demo/map_view/address_select_in_map.dart';
 import 'package:flutter_first_demo/model/poi_model.dart';
-
 import '../constants.dart';
 
 class MapSelectPage extends StatefulWidget {
@@ -42,6 +42,15 @@ class _MapSelectPageState extends State<MapSelectPage> {
                   } catch (e) {
                     print(e);
                   }
+                },
+              ),
+              ElevatedButton(
+                child: Text('地图选点'),
+                onPressed: () async {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddressSelectInMapPage()),
+                  );
                 },
               )
             ],
