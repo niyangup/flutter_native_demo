@@ -10,6 +10,7 @@
 - Stream的小demo
 - 集成AndroidView的demo
 - 集成高德地图导航的demo(only Android)
+- 集成高德web地图选点demo(only Android 使用Android原生Webview)
 
 
 
