@@ -4,7 +4,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Poi;
 import com.amap.api.navi.AmapNaviPage;
 import com.amap.api.navi.AmapNaviParams;
@@ -12,13 +11,13 @@ import com.amap.api.navi.AmapNaviType;
 import com.amap.api.navi.AmapPageType;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public class MainActivity extends FlutterActivity implements MethodChannel.MethodCallHandler {
 
@@ -34,6 +33,7 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
                 .getPlatformViewsController()
                 .getRegistry()
                 .registerViewFactory("id", new NativeViewFactory(flutterEngine.getDartExecutor().getBinaryMessenger()));
+        GeneratedPluginRegistrant.registerWith(flutterEngine);
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), METHOD_CHANNEL_NAME).setMethodCallHandler(this);
     }
 
@@ -63,6 +63,6 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
         AmapNaviParams params = new AmapNaviParams(start, null, end, AmapNaviType.DRIVER, AmapPageType.ROUTE);
         AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, null);
 
-        
+
     }
 }

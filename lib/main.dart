@@ -6,6 +6,7 @@ import 'package:flutter_first_demo/second_page.dart';
 
 import 'map_view/map_select_page.dart';
 import 'native_view/native_view_page.dart';
+import 'push/push_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -99,6 +100,8 @@ class _MyAppState extends State<MyApp> {
               page = NativeViewPage();
             } else if (value == "Map") {
               page = MapSelectPage();
+            } else if (value == "Push") {
+              page = PushPage();
             }
             Navigator.push(context, MaterialPageRoute(builder: (context) => page));
           },
@@ -107,6 +110,7 @@ class _MyAppState extends State<MyApp> {
               PopupMenuItem<String>(value: 'Stream', child: Text('Stream')),
               PopupMenuItem<String>(value: 'AndroidView', child: Text('AndroidView')),
               PopupMenuItem<String>(value: 'Map', child: Text('Map')),
+              PopupMenuItem<String>(value: 'Push', child: Text('Push')),
             ];
           },
         )
