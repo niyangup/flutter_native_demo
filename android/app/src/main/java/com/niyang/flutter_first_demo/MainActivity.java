@@ -1,8 +1,10 @@
 package com.niyang.flutter_first_demo;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.amap.api.maps.model.Poi;
 import com.amap.api.navi.AmapNaviPage;
@@ -17,7 +19,6 @@ import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public class MainActivity extends FlutterActivity implements MethodChannel.MethodCallHandler {
 
@@ -27,13 +28,48 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
 
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: ");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
+    @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         Log.d(TAG, "configureFlutterEngine: ");
         flutterEngine
                 .getPlatformViewsController()
                 .getRegistry()
                 .registerViewFactory("id", new NativeViewFactory(flutterEngine.getDartExecutor().getBinaryMessenger()));
-        GeneratedPluginRegistrant.registerWith(flutterEngine);
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), METHOD_CHANNEL_NAME).setMethodCallHandler(this);
     }
 

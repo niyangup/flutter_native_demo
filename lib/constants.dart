@@ -1,5 +1,7 @@
 ///NativeViewPage
 const String NativeViewPageMethodChannelName = "name";
+const String NativeViewPageBasicMessageChannelName = "NativeViewPageBasicMessageChannelName";
+const String NativeViewPageEventChannelName = "NativeViewPageEventChannelName";
 const String NativeViewPageMethodChannelInvokeName = "eat";
 
 ///MapSelectPage
