@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -77,13 +78,14 @@ class _MyAppState extends State<MyApp> {
       title: ValueListenableBuilder(
         valueListenable: distance,
         builder: (context, value, child) {
-          return Opacity(
-            opacity: (distance.value / 300) > 0
-                ? (distance.value / 300) > 1
-                    ? 1
-                    : distance.value / 300
-                : 0,
-            child: Text('text'),
+          return Text(
+            'text',
+            style: TextStyle(
+                color: Colors.white.withOpacity((distance.value / 300) > 0
+                    ? (distance.value / 300) > 1
+                        ? 1
+                        : distance.value / 300
+                    : 0)),
           );
         },
       ),
