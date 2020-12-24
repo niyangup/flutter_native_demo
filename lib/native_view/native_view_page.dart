@@ -66,7 +66,7 @@ class _NativeViewPageState extends State<NativeViewPage> {
                 : Center(child: Text('暂不支持')),
           ),
           ElevatedButton(
-            child: Text('用MethodChannel切换内容'),
+            child: Text('用MethodChannel通知原生切换内容'),
             onPressed: () async {
               String msg = await _channel.invokeMethod<String>(
                   NativeViewPageMethodChannelInvokeName, ["this is text", "this is haha"]);
@@ -74,7 +74,7 @@ class _NativeViewPageState extends State<NativeViewPage> {
             },
           ),
           ElevatedButton(
-            child: Text('原生主动调用flutter'),
+            child: Text('原生使用MethodChannel主动给flutter发消息'),
             onPressed: () async {
               await _channel.invokeMethod<String>("handleNativeToFlutter");
             },
