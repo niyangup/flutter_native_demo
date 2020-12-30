@@ -29,11 +29,11 @@ class _MapSelectPageState extends State<MapSelectPage> {
                 child: Text('跳转导航'),
                 onPressed: () async {
                   var start = PoiModel(
-                      name: "start",
+                      name: "北京首都国际机场",
                       coordinate: Coordinate(latitude: 39.918058, longitude: 116.397026),
                       poiid: "B000A28DAE");
                   var end = PoiModel(
-                      name: "end",
+                      name: "北京大学",
                       coordinate: Coordinate(latitude: 39.941823, longitude: 116.426319),
                       poiid: "B000A816R6");
                   try {
