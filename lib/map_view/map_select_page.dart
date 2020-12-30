@@ -28,11 +28,11 @@ class _MapSelectPageState extends State<MapSelectPage> {
               ElevatedButton(
                 child: Text('跳转导航'),
                 onPressed: () async {
-                  var start = new PoiModel(
+                  var start = PoiModel(
                       name: "start",
                       coordinate: Coordinate(latitude: 39.918058, longitude: 116.397026),
                       poiid: "B000A28DAE");
-                  var end = new PoiModel(
+                  var end = PoiModel(
                       name: "end",
                       coordinate: Coordinate(latitude: 39.941823, longitude: 116.426319),
                       poiid: "B000A816R6");
