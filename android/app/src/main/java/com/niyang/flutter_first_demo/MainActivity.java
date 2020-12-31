@@ -5,6 +5,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import com.amap.api.maps.model.Poi;
 import com.amap.api.navi.AmapNaviPage;
@@ -20,7 +23,7 @@ import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 
-public class MainActivity extends FlutterActivity implements MethodChannel.MethodCallHandler {
+public class MainActivity extends FlutterActivity implements MethodChannel.MethodCallHandler, LifecycleObserver {
 
     private static final String TAG = "MainActivity";
     private static final String METHOD_CHANNEL_NAME = "map_method";
@@ -31,6 +34,7 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
+        getLifecycle().addObserver(this);
     }
 
     @Override
@@ -61,6 +65,15 @@ public class MainActivity extends FlutterActivity implements MethodChannel.Metho
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy: ");
+    }
+
+
+    /**
+     * 感知生命周期
+     */
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    private void logNow() {
+        Log.d(TAG, "ON_RESUME: ");
     }
 
     @Override
