@@ -9,10 +9,11 @@
 - 首页SliverAppbar的扩展区根据滑动的距离显示title
 - Stream的小demo
 - 集成AndroidView的demo
+- Android的感知生命周期
 - 集成高德地图导航的demo(only Android)
 - 集成高德web地图选点demo(only Android 使用Android原生Webview)
 - <del>集成Mob推送(only Android) 作用不大</del>
-- BasicMessageChannel,MethodChannel,EventChannel双向通信
+- BasicMessageChannel,MethodChannel双向通信和EventChannel单向通信
 
 
 
